@@ -8,6 +8,8 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { RegistrationComponent } from './registration/registration.component';
 import { WishListsComponent } from './wish-lists/wish-lists.component';
+import { FriendsComponent } from './friends/friends.component';
+import { GiftsComponent } from './gifts/gifts.component';
 
 @NgModule({
   declarations: [
@@ -15,6 +17,8 @@ import { WishListsComponent } from './wish-lists/wish-lists.component';
     LoginComponent,
     RegistrationComponent,
     WishListsComponent,
+    FriendsComponent,
+    GiftsComponent,
   ],
   imports: [
     BrowserModule,

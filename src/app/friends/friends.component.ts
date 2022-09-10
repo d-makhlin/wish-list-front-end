@@ -1,21 +1,17 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
+
 @Component({
-  selector: 'app-wish-lists',
-  templateUrl: './wish-lists.component.html',
-  styleUrls: ['./wish-lists.component.css']
+  selector: 'app-friends',
+  templateUrl: './friends.component.html',
+  styleUrls: ['./friends.component.css']
 })
-export class WishListsComponent implements OnInit {
+export class FriendsComponent implements OnInit {
 
   constructor(private http: HttpClient, private router: Router) { }
 
-  lists = [
-    {id: "123", name: "first list"},
-    {id: "124", name: "second list"}
-  ]
   ngOnInit(): void {
-    
   }
 
   logout () {
@@ -28,16 +24,4 @@ export class WishListsComponent implements OnInit {
     )
   }
 
-  goToList (id: string) {
-    alert(id);
-    this.router.navigate(['wish-list']);
-  }
-
-  editList (id: string) {
-    alert(id);
-  }
-
-  deleteList (id: string) {
-    alert(id);
-  }
 }
