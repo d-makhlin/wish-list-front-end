@@ -19,10 +19,13 @@ export class WishListsComponent implements OnInit {
     interface WishList {
       id: string;
       name: string;
+      owner_id: string;
     }
     var headers_object = new HttpHeaders().set("Authorization", "Bearer " + localStorage.getItem('access_token'));
     this.http.get<Array<WishList>>(`http://127.0.0.1:8000/api/wishes/wish-list/?owner_id=${localStorage.getItem('user_id')}`, {headers:headers_object}).subscribe(res => {
-      console.log(res)
+      for (let elem of res) {
+        this.lists.push(elem);
+      }
     }, err => {
       alert(err)
     })

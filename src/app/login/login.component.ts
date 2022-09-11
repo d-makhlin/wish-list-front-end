@@ -35,11 +35,11 @@ export class LoginComponent implements OnInit {
       {'username': res.username, 'password': this.loginForm.controls['password'].value}).subscribe(tokenRes => {
         localStorage.setItem('access_token', tokenRes.access);
         localStorage.setItem('refresh_token', tokenRes.refresh);
+        this.router.navigate(['wish-lists']);
       }, err => {
         alert(err);
       })
       this.loginForm.reset();
-      this.router.navigate(['wish-lists']);
     },err=>{
       alert(err);
     }
