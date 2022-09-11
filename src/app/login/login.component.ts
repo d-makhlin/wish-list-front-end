@@ -21,8 +21,23 @@ export class LoginComponent implements OnInit {
   }
   
   login() {
-    this.http.post('http://127.0.0.1:8000/api/user/auth/login/', this.loginForm.value).subscribe(res => {
-      alert('logged in');
+    interface UserID {
+      user_id: string;
+      username: string;
+    }
+    interface JWTAuth {
+      access: string;
+      refresh: string;
+    }  
+    this.http.post<UserID>('http://127.0.0.1:8000/api/user/auth/login/', this.loginForm.value).subscribe(res => {
+      localStorage.setItem('user_id', res.user_id);
+      this.http.post<JWTAuth>('http://127.0.0.1:8000/api/token/', 
+      {'username': res.username, 'password': this.loginForm.controls['password'].value}).subscribe(tokenRes => {
+        localStorage.setItem('access_token', tokenRes.access);
+        localStorage.setItem('refresh_token', tokenRes.refresh);
+      }, err => {
+        alert(err);
+      })
       this.loginForm.reset();
       this.router.navigate(['wish-lists']);
     },err=>{
