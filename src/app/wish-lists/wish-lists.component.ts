@@ -43,7 +43,7 @@ export class WishListsComponent implements OnInit {
 
   goToList (id: string) {
     alert(id);
-    this.router.navigate(['wish-list']);
+    this.router.navigate(['wish-items']);
   }
 
   editList (id: string) {
@@ -52,5 +52,9 @@ export class WishListsComponent implements OnInit {
 
   deleteList (id: string) {
     alert(id);
+  }
+
+  addList() {
+    alert('add new list');
   }
 }

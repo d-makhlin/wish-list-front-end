@@ -4,6 +4,7 @@ import { FriendsComponent } from './friends/friends.component';
 import { GiftsComponent } from './gifts/gifts.component';
 import { LoginComponent } from './login/login.component';
 import { RegistrationComponent } from './registration/registration.component';
+import { WishItemsComponent } from './wish-items/wish-items.component';
 import { WishListsComponent } from './wish-lists/wish-lists.component';
 
 const routes: Routes = [
@@ -13,6 +14,7 @@ const routes: Routes = [
   {path: 'wish-lists', component: WishListsComponent},
   {path: 'friends', component: FriendsComponent},
   {path: 'gifts', component: GiftsComponent},
+  {path: 'wish-items', component: WishItemsComponent},
 ];
 
 @NgModule({
