@@ -10,6 +10,7 @@ import { RegistrationComponent } from './registration/registration.component';
 import { WishListsComponent } from './wish-lists/wish-lists.component';
 import { FriendsComponent } from './friends/friends.component';
 import { GiftsComponent } from './gifts/gifts.component';
+import { WishItemsComponent } from './wish-items/wish-items.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { GiftsComponent } from './gifts/gifts.component';
     WishListsComponent,
     FriendsComponent,
     GiftsComponent,
+    WishItemsComponent,
   ],
   imports: [
     BrowserModule,

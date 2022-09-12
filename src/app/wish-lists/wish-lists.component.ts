@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Router } from '@angular/router';
 @Component({
   selector: 'app-wish-lists',
@@ -8,14 +8,27 @@ import { Router } from '@angular/router';
 })
 export class WishListsComponent implements OnInit {
 
+  public lists: Array<any> = [];
   constructor(private http: HttpClient, private router: Router) { }
 
-  lists = [
-    {id: "123", name: "first list"},
-    {id: "124", name: "second list"}
-  ]
   ngOnInit(): void {
-    
+    this.getWishLists()
+  }
+
+  getWishLists() {
+    interface WishList {
+      id: string;
+      name: string;
+      owner_id: string;
+    }
+    var headers_object = new HttpHeaders().set("Authorization", "Bearer " + localStorage.getItem('access_token'));
+    this.http.get<Array<WishList>>(`http://127.0.0.1:8000/api/wishes/wish-list/?owner_id=${localStorage.getItem('user_id')}`, {headers:headers_object}).subscribe(res => {
+      for (let elem of res) {
+        this.lists.push(elem);
+      }
+    }, err => {
+      alert(err)
+    })
   }
 
   logout () {
@@ -30,7 +43,7 @@ export class WishListsComponent implements OnInit {
 
   goToList (id: string) {
     alert(id);
-    this.router.navigate(['wish-list']);
+    this.router.navigate(['wish-items']);
   }
 
   editList (id: string) {
@@ -39,5 +52,9 @@ export class WishListsComponent implements OnInit {
 
   deleteList (id: string) {
     alert(id);
+  }
+
+  addList() {
+    alert('add new list');
   }
 }

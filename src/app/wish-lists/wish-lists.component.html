@@ -22,8 +22,8 @@
         <div class="album py-5 bg-light">
             <div class="container">
               <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-                <div *ngFor="let list of lists" class="col">
-                  <div class="card shadow-sm">
+                <div *ngFor="let list of this.lists" class="col">
+                  <div class="card shadow-sm" style="cursor: pointer;" (click)="goToList(list.id)">
                     <svg class="bd-placeholder-img card-img-top" width="100%" height="225" focusable="false">
                         <defs>
                             <linearGradient id="grad1">
@@ -48,6 +48,13 @@
                         </small>
                       </div>
                     </div>
+                  </div>
+                </div>
+                <div class="card shadow-sm" style="height: 290px; cursor: pointer;" (click)="addList()">
+                  <div class="d-flex justify-content-center align-items-center card-body" style="height: 100vh"  width="100%" height="225" >
+                    <button class="btn gradient-custom" style="color: white;">
+                      + Add new WishList
+                    </button>
                   </div>
                 </div>
             </div>
